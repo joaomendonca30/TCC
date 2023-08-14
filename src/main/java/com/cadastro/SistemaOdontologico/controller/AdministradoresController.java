@@ -18,51 +18,50 @@ public class AdministradoresController {
     private AdministradoresRepo repo;
 
     @GetMapping("/administradores")
-    public String index(Model model) {
-        List<Administrador> administradores = (List<Administrador>) repo.findAll();
+    public String index(Model model){
+        List<Administrador> administradores = (List<Administrador>)repo.findAll();
         model.addAttribute("administradores", administradores);
         return "administradores/index";
     }
 
     @GetMapping("/administradores/novo")
-    public String novo() {
+    public String novo(){
         return "administradores/novo";
     }
 
-    //Salvando novo usuario
     @PostMapping("/administradores/criar")
-    public String criar(Administrador administrador) {
+    public String criar(Administrador administrador){
         repo.save(administrador);
         return "redirect:/administradores";
     }
 
-    //Excluindo um usuario
-    @GetMapping("/administradores/{id}/excluir")
-    public String excluir(@PathVariable int id) {
-        repo.deleteById(id);
-        return "redirect:/administradores";
-    }
-
-    //Buscando um usuario
     @GetMapping("/administradores/{id}")
-    public String buscar(@PathVariable int id, Model model) {
+    public String busca(@PathVariable int id, Model model){
         Optional<Administrador> admin = repo.findById(id);
-        try {
+        try{
             model.addAttribute("administrador", admin.get());
         }
-        catch(Exception e){
-            return "redirect:/administradores";
-        }
+        catch(Exception err){ return "redirect:/administradores"; }
+
         return "/administradores/editar";
     }
-    //Buscando um usuario
+
     @PostMapping("/administradores/{id}/atualizar")
-    public String alterar(@PathVariable int id, Administrador administrador) {
+    public String atualizar(@PathVariable int id, Administrador administrador){
+        // if(!repo.exist(id)){
         if(!repo.existsById(id)){
             return "redirect:/administradores";
         }
+
         repo.save(administrador);
+
         return "redirect:/administradores";
     }
 
+
+    @GetMapping("/administradores/{id}/excluir")
+    public String excluir(@PathVariable int id){
+        repo.deleteById(id);
+        return "redirect:/administradores";
+    }
 }

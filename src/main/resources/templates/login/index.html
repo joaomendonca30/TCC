@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin - Sistema Odontologico</title>
+    <title>Sistema Odontologico - Login</title>
 
     <!-- Custom fonts for this template-->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -39,32 +39,31 @@
                         <div class="col-lg-6">
                             <div class="p-5">
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Seja muito bem vindo!</h1>
+                                    <h1 class="h4 text-gray-900 mb-4">Seja muito bem vindo</h1>
                                 </div>
                                 <form class="user" action="/logar" method="POST">
                                     <div class="form-group">
                                         <input type="email" class="form-control form-control-user"
-                                               id="email" name="email" required aria-describedby="emailHelp"
-                                               placeholder="Digite o seu Email: ">
+                                               id="email" name="email" aria-describedby="emailHelp"
+                                               placeholder="Digite o seu email">
                                     </div>
                                     <div class="form-group">
                                         <input type="password" name="senha" class="form-control form-control-user"
-                                               id="senha" placeholder="Digite sua senha:">
+                                               id="senha" placeholder="Digite sua senha">
                                     </div>
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox small">
                                             <input type="checkbox" class="custom-control-input" id="lembrar" name="lembrar">
-                                            <label class="custom-control-label" for="lembrar">Remember
-                                                Me</label>
+                                            <label class="custom-control-label" for="lembrar">Lembrar de mim</label>
                                         </div>
                                     </div>
+
                                     <div th:if="${erro != null}" th:text="${erro}" class="alert alert-danger" role="alert"></div>
 
                                     <button class="btn btn-primary btn-user btn-block">
                                         Login
                                     </button>
                                 </form>
-                                <hr>
                             </div>
                         </div>
                     </div>
