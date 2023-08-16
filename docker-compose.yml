@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  db:
+    image: mysql
+    container_name: sistemaOdonto
+    environment:
+       MYSQL_ROOT_PASSWORD: root
+    ports:
+    - "3308:3306"
+    env_file:
+    - .env
+    volumes:
+    - sistema-Odontologico:/var/lib/mysql
+
+volumes:
+  sistema-Odontologico:
